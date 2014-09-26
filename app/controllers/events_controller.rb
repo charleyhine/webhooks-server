@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  protect_from_forgery
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
@@ -24,12 +25,13 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    puts '++++++++++ APPLES ' + request.env['HTTP_ACCEPT'].to_s
+    @event = Event.new(body: request.body.read)
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render action: 'show', status: :created, location: @event }
+        format.all { render nothing: true, status: 200 }
       else
         format.html { render action: 'new' }
         format.json { render json: @event.errors, status: :unprocessable_entity }
