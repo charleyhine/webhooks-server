@@ -1,5 +1,5 @@
 {
-  "name": "Chain.com Webhooks Server Example",
+  "name": "Chain Webhooks Server Example",
   "description": "A barebones Ruby on Rails app enabling realtime block chain activity updates",
   "repository": "https://github.com/charleyhine/webhooks-server",
   "logo": "https://node-js-sample.herokuapp.com/node.svg",
